@@ -45,3 +45,25 @@
         }
     }
 }
+
+.gym-container{
+    background-color: $light-light-grey;
+    border-radius: 10px;
+    width: 350px;
+    p, hr{
+        color: $light-grey;
+    }
+    h2{
+        color: $dark-grey;
+        font-weight: bold;
+    }
+    .gym-container-header{
+        p:first-child{
+            font-weight: bold;
+        }
+    }
+    img{
+        width: 70px;
+        height: 70px;
+    }
+}
