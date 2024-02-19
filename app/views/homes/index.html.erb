@@ -1,4 +1,4 @@
-<%= form_for @gym, remote: true, html: {class: 'w-75 mx-auto gym-form p-3'} do |f| %>
+<%= form_for @gym, remote: true, html: {class: 'gym-form w-75 mx-auto p-3'} do |f| %>
     <div class='d-flex align-items-center'>
         <%= image_tag 'icon-hour.png', alt: 'Ícone de relógio', width: '30px', height: '30px', class: 'me-2' %>
         <p class='mb-0'>Horário</p>
@@ -41,3 +41,62 @@
     <% end %>
     <%= button_tag 'LIMPAR', type:'button', class:'mt-4 py-2 btn w-100 clean-btn'%>
 <% end %>
+
+<div class="legend w-75 mx-auto my-3 p-4">
+    <div class="legend-group">
+        <p class="text-center">Máscara</p>
+        <div class="group-imgs-container d-flex justify-content-center">
+            <div class="legend-img-container px-2 d-flex flex-column align-items-center">
+                <%= image_tag "required-mask.png", alt:"Required mask"%>
+                <p>Obrigatório</p>
+            </div>
+            <div class="legend-img-container px-2 d-flex flex-column align-items-center">
+                <%= image_tag "recommended-mask.png", alt:"Recommended mask"%>
+                <p>Recomendado</p>
+            </div>
+        </div>
+    </div>
+    <div class="legend-group mt-4">
+        <p class="text-center">Toalha</p>
+        <div class="group-imgs-container d-flex justify-content-center">
+            <div class="legend-img-container px-2 d-flex flex-column align-items-center">
+                <%= image_tag "required-towel.png", alt:"Required towel"%>
+                <p>Obrigatório</p>
+            </div>
+            <div class="legend-img-container px-2 d-flex flex-column align-items-center">
+                <%= image_tag "recommended-towel.png", alt:"Recommended towel"%>
+                <p>Recomendado</p>
+            </div>
+        </div>
+    </div>
+    <div class="legend-group mt-4">
+        <p class="text-center">Bebedouro</p>
+        <div class="group-imgs-container d-flex justify-content-center">
+            <div class="legend-img-container px-2 d-flex flex-column align-items-center">
+                <%= image_tag "partial-fountain.png", alt:"Partial fountain"%>
+                <p>Parcial</p>
+            </div>
+            <div class="legend-img-container px-2 d-flex flex-column align-items-center">
+                <%= image_tag "forbidden-fountain.png", alt:"Forbidden fountain"%>
+                <p>Proibido</p>
+            </div>
+        </div>
+    </div>
+    <div class="legend-group mt-4">
+        <p class="text-center">Vestiários</p>
+        <div class="group-imgs-container d-flex justify-content-center">
+            <div class="legend-img-container px-2 d-flex flex-column align-items-center">
+                <%= image_tag "required-lockerroom.png", alt:"Required locker room"%>
+                <p>Liberado</p>
+            </div>
+            <div class="legend-img-container px-2 d-flex flex-column align-items-center">
+                <%= image_tag "partial-lockerroom.png", alt:"Partial locker room"%>
+                <p>Parcial</p>
+            </div>
+            <div class="legend-img-container px-2 d-flex flex-column align-items-center">
+                <%= image_tag "forbidden-lockerroom.png", alt:"Forbidden locker room"%>
+                <p>Fechado</p>
+            </div>
+        </div>
+    </div>
+</div>
