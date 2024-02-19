@@ -1,2 +1,43 @@
-<h1>TESTE!</h1>
-<button class='mb-2 btn btn-primary'>Click Me!</button>
+<%= form_for @gym, remote: true, html: {class: 'w-75 mx-auto gym-form p-3'} do |f| %>
+    <div class='d-flex align-items-center'>
+        <%= image_tag 'icon-hour.png', alt: 'Ícone de relógio', width: '30px', height: '30px', class: 'me-2' %>
+        <p class='mb-0'>Horário</p>
+    </div>
+    <h2 class='mt-4'>Qual período quer treinar?</h2>
+    <hr class='my-2'>
+
+    <div class='d-flex form-check'>
+        <%= radio_button_tag :day_period, "morning", false, class: 'form-check-input' %>
+        <%= label_tag :day_period_morning, class: 'px-2 d-flex flex-grow-1 justify-content-between form-check-label' do %>
+            <span>Manhã</span>
+            <span>06:00 às 12:00</span>
+        <% end %>
+    </div>
+    <hr class='my-2'>
+    <div class='d-flex form-check'>
+        <%= radio_button_tag :day_period, "afternoon", false, class:'form-check-input' %>
+        <%= label_tag :day_period_afternoon, class: 'px-2 d-flex flex-grow-1 justify-content-between form-check-label' do %>
+            <span>Tarde</span>
+            <span>12:01 às 18:00</span>
+        <% end %>
+    </div>
+    <hr class='my-2'>
+    <div class='d-flex form-check'>
+        <%= radio_button_tag :day_period, "evening", false, class: 'form-check-input' %>
+        <%= label_tag :day_period_evening, class: 'px-2 d-flex flex-grow-1 justify-content-between form-check-label' do %>
+            <span>Noite</span>
+            <span>18:01 às 23:00</span>
+        <% end %>
+    </div>
+    <hr class='my-2'>
+
+    <div class="mt-4 form-check">
+        <%= check_box_tag :show_closed_gyms, 1, false, class:'form-check-input' %>
+        <%= label_tag :show_closed_gyms, 'Exibir unidades fechadas', class:'form-check-label' %>
+    </div>
+    <p class='mt-4'>Resultados encontrados: <span id="gym-count">0</span></p>
+    <%= button_tag type:'submit', class:'mt-4 py-2 btn w-100' do%>
+        <p class='my-0'>ENCONTRAR<br>UNIDADE</p>
+    <% end %>
+    <%= button_tag 'LIMPAR', type:'button', class:'mt-4 py-2 btn w-100 clean-btn'%>
+<% end %>

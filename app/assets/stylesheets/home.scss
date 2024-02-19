@@ -1,0 +1,32 @@
+@import 'application';
+
+.gym-form{
+    border: 3px solid #80808033;
+    border-radius: 10px;
+    h2{
+        color: $light-grey;
+    }
+    span{
+        color: $light-grey;
+    }
+    hr{
+        color: $light-grey;
+    }
+    input[type='radio'], input[type='checkbox']{
+        border: 2px solid $light-grey;
+    }
+    #gym-count{
+        font-size: 18pt;
+        font-weight: 700;
+        color: $dark-grey;
+    }
+    [type='submit']{
+        font-weight: 700;
+        background-color: $yellow;
+    }
+    .clean-btn{
+        font-weight: 700;
+        background-color: white;
+        border: 1px solid #80808033;
+    }
+}

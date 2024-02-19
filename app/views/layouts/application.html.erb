@@ -11,18 +11,18 @@
 
   <body>
     <header class='text-center'>
-      <div class='text-center logo-container'>
-        <%= image_tag 'logo.svg', width: '150px', height: '150px' %>
+      <div class='d-flex justify-content-center logo-container'>
+        <%= image_tag 'logo.svg', width: '200px', height: '150px'%>
       </div>
-      <div class='text-start w-50 mx-auto'>
+      <div class='text-start w-75 mx-auto p-4'>
         <h1>REABERTURA<br>SMART FIT</h1>
         <div id='title-hr' class='mt-4'></div>
         <p class='mt-5'>O horário de funcionamento das nossas unidades está seguindo os decretos de cada município. Por isso, confira aqui se a sua unidade está aberta e as medidas de segurança que estamos seguindo.</p>
       </div>
     </header>
     <%= yield %>
-    <footer class='pb-5 text-center'>
-      <%= image_tag 'logo.svg', width: '75px', height: '75px' %>
+    <footer class='pt-4 pb-5 text-center'>
+      <%= image_tag 'logo.svg', width: '120px', height: '100px' %>
       <p>Todos os direitos reservados - 2020</p>
     </footer>
   </body>
