@@ -16,12 +16,39 @@
 
 @import 'bootstrap/scss/bootstrap';
 
+
+@font-face{
+    font-family: 'Gotham';
+    src: font_url('gotham-light.woff2') format('woff');
+    font-weight: 300;
+}
+@font-face{
+    font-family: 'Gotham';
+    src: font_url('gotham-book.woff2') format('woff');
+    font-weight: 500;
+}
+@font-face{
+    font-family: 'Gotham';
+    src: font_-url('gotham-bold.woff2') format('woff');
+    font-weight: 700;
+}
+@font-face{
+    font-family: 'Gotham';
+    src: font_url('gotham-black.woff2') format('woff');
+    font-weight:900;
+}
+
+*{
+    font-family: 'Gotham';
+}
+
 header{
     .logo-container{
         background-color: black;
     }
     h1{
         margin-top: 60px;
+        font-weight: 700;
     }
     #title-hr{
         height: 12px;
