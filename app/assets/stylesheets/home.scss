@@ -50,6 +50,7 @@
     background-color: $light-light-grey;
     border-radius: 10px;
     width: 350px;
+    height: 466px;
     p, hr{
         color: $light-grey;
     }
@@ -60,6 +61,12 @@
     .gym-container-header{
         p:first-child{
             font-weight: bold;
+        }
+        .opened-gym{
+            color: $green;
+        }
+        .closed-gym{
+            color: $red;
         }
     }
     img{
