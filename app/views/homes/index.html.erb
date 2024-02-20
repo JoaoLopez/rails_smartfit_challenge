@@ -31,19 +31,31 @@
     </div>
     <hr class='my-2'>
 
-    <div class="mt-4 form-check">
-        <%= check_box_tag :show_closed_gyms, 1, false, class:'form-check-input' %>
-        <%= label_tag :show_closed_gyms, 'Exibir unidades fechadas', class:'form-check-label' %>
+    <div class="d-block d-md-flex justify-content-md-between align-items-center">
+        <div class="mt-4 mb-0 form-check">
+            <%= check_box_tag :show_closed_gyms, 1, false, class:'form-check-input' %>
+            <%= label_tag :show_closed_gyms, 'Exibir unidades fechadas', class:'form-check-label' %>
+        </div>
+        <div class='mt-4'>
+            <p class="mb-0">Resultados encontrados: <span id="gym-count">0</span></p>
+        </div>
     </div>
-    <p class='mt-4'>Resultados encontrados: <span id="gym-count">0</span></p>
-    <%= button_tag type:'submit', class:'mt-4 py-2 btn w-100' do%>
-        <p class='my-0'>ENCONTRAR<br>UNIDADE</p>
-    <% end %>
-    <%= button_tag 'LIMPAR', type:'button', class:'mt-4 py-2 btn w-100 clean-btn'%>
+    <div class="d-block d-md-none">
+        <%= button_tag type:'submit', class:'w-100 mt-4 py-2 btn' do%>
+            <p class='my-0'>ENCONTRAR<br>UNIDADE</p>
+        <% end %>
+        <%= button_tag 'LIMPAR', type:'button', class:'w-100 mt-4 py-2 btn clean-btn'%>
+    </div>
+    <div class="d-none d-md-flex flex-md-row justify-content-md-center">
+        <%= button_tag type:'submit', class:'col-md mt-4 me-md-2 py-2 btn btn-expanded' do%>
+            <p class='my-0'>ENCONTRAR UNIDADE</p>
+        <% end %>
+        <%= button_tag 'LIMPAR', type:'button', class:'col-md mt-4 ms-md-2 py-2 btn btn-expanded clean-btn'%>
+    </div>
 <% end %>
 
-<div class="legend w-75 mx-auto my-3 p-4">
-    <div class="legend-group">
+<div class="legend w-75 mx-auto my-3 p-4 row">
+    <div class="col legend-group mt-4">
         <p class="text-center">Máscara</p>
         <div class="group-imgs-container d-flex justify-content-center">
             <div class="legend-img-container px-2 d-flex flex-column align-items-center">
@@ -56,7 +68,7 @@
             </div>
         </div>
     </div>
-    <div class="legend-group mt-4">
+    <div class="col legend-group mt-4">
         <p class="text-center">Toalha</p>
         <div class="group-imgs-container d-flex justify-content-center">
             <div class="legend-img-container px-2 d-flex flex-column align-items-center">
@@ -69,7 +81,7 @@
             </div>
         </div>
     </div>
-    <div class="legend-group mt-4">
+    <div class="col legend-group mt-4">
         <p class="text-center">Bebedouro</p>
         <div class="group-imgs-container d-flex justify-content-center">
             <div class="legend-img-container px-2 d-flex flex-column align-items-center">
@@ -82,7 +94,7 @@
             </div>
         </div>
     </div>
-    <div class="legend-group mt-4">
+    <div class="col legend-group mt-4">
         <p class="text-center">Vestiários</p>
         <div class="group-imgs-container d-flex justify-content-center">
             <div class="legend-img-container px-2 d-flex flex-column align-items-center">
@@ -101,8 +113,8 @@
     </div>
 </div>
 
-<div class="gym-list w-'100 mx-2">
-    <div class="gym-container mx-auto p-3">
+<div class="gym-list d-flex flex-wrap justify-content-start gap-3 w-75 mx-auto">
+    <div class="gym-container mt-4 p-3">
         <div class="gym-container-header">
             <p class="opened-gym">Aberto</p>
             <h2>Vicente Linhares</h2>
@@ -133,7 +145,124 @@
             </div>
         </div>
     </div>
-    <div class="gym-container mx-auto mt-4 p-3">
+    <div class="gym-container mt-4 p-3">
+        <div class="gym-container-header">
+            <p class="closed-gym">Fechado</p>
+            <h2>Vila Carrão</h2>
+            <p class="mb-0">Av. Guilherme Giorgi, 1460, Vila Carrão</p>
+            <p>São Paulo - SP</p>
+        </div>
+    </div>
+    <div class="gym-container mt-4 p-3">
+        <div class="gym-container-header">
+            <p class="opened-gym">Aberto</p>
+            <h2>Vicente Linhares</h2>
+            <p class="mb-0">Rua Tibúrcio Cavalcante, 1885 - Meireles</p>
+            <p>Fortaleza, CE</p>
+        </div>
+        <hr>
+        <div class="gym-container-body">
+            <div class="gym-images-rules row">
+                <%= image_tag 'required-mask.png', class:'col' %>
+                <%= image_tag 'required-towel.png', class:'col' %>
+                <%= image_tag 'partial-fountain.png', class:'col' %>
+                <%= image_tag 'forbidden-lockerroom.png', class:'col' %>
+            </div>
+            <div class="gym-schedules mt-4 row">
+                <div class="col-6 a-gym-schedule">
+                    <h2>Seg. à Sex.</h2>
+                    <p>06h às 22h</p>
+                </div>
+                <div class="col-6 a-gym-schedule">
+                    <h2>Sáb.</h2>
+                    <p>09h às 18h</p>
+                </div>
+                <div class="col-6 a-gym-schedule">
+                    <h2>Dom.</h2>
+                    <p>Fechada</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gym-container mt-4 p-3">
+        <div class="gym-container-header">
+            <p class="closed-gym">Fechado</p>
+            <h2>Vila Carrão</h2>
+            <p class="mb-0">Av. Guilherme Giorgi, 1460, Vila Carrão</p>
+            <p>São Paulo - SP</p>
+        </div>
+    </div>
+    <div class="gym-container mt-4 p-3">
+        <div class="gym-container-header">
+            <p class="opened-gym">Aberto</p>
+            <h2>Vicente Linhares</h2>
+            <p class="mb-0">Rua Tibúrcio Cavalcante, 1885 - Meireles</p>
+            <p>Fortaleza, CE</p>
+        </div>
+        <hr>
+        <div class="gym-container-body">
+            <div class="gym-images-rules row">
+                <%= image_tag 'required-mask.png', class:'col' %>
+                <%= image_tag 'required-towel.png', class:'col' %>
+                <%= image_tag 'partial-fountain.png', class:'col' %>
+                <%= image_tag 'forbidden-lockerroom.png', class:'col' %>
+            </div>
+            <div class="gym-schedules mt-4 row">
+                <div class="col-6 a-gym-schedule">
+                    <h2>Seg. à Sex.</h2>
+                    <p>06h às 22h</p>
+                </div>
+                <div class="col-6 a-gym-schedule">
+                    <h2>Sáb.</h2>
+                    <p>09h às 18h</p>
+                </div>
+                <div class="col-6 a-gym-schedule">
+                    <h2>Dom.</h2>
+                    <p>Fechada</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gym-container mt-4 p-3">
+        <div class="gym-container-header">
+            <p class="closed-gym">Fechado</p>
+            <h2>Vila Carrão</h2>
+            <p class="mb-0">Av. Guilherme Giorgi, 1460, Vila Carrão</p>
+            <p>São Paulo - SP</p>
+        </div>
+    </div>
+    <div class="gym-container mt-4 p-3">
+        <div class="gym-container-header">
+            <p class="opened-gym">Aberto</p>
+            <h2>Vicente Linhares</h2>
+            <p class="mb-0">Rua Tibúrcio Cavalcante, 1885 - Meireles</p>
+            <p>Fortaleza, CE</p>
+        </div>
+        <hr>
+        <div class="gym-container-body">
+            <div class="gym-images-rules row">
+                <%= image_tag 'required-mask.png', class:'col' %>
+                <%= image_tag 'required-towel.png', class:'col' %>
+                <%= image_tag 'partial-fountain.png', class:'col' %>
+                <%= image_tag 'forbidden-lockerroom.png', class:'col' %>
+            </div>
+            <div class="gym-schedules mt-4 row">
+                <div class="col-6 a-gym-schedule">
+                    <h2>Seg. à Sex.</h2>
+                    <p>06h às 22h</p>
+                </div>
+                <div class="col-6 a-gym-schedule">
+                    <h2>Sáb.</h2>
+                    <p>09h às 18h</p>
+                </div>
+                <div class="col-6 a-gym-schedule">
+                    <h2>Dom.</h2>
+                    <p>Fechada</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gym-container mt-4 p-3">
         <div class="gym-container-header">
             <p class="closed-gym">Fechado</p>
             <h2>Vila Carrão</h2>

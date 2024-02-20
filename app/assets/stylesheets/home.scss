@@ -3,6 +3,7 @@
 .gym-form{
     border: 3px solid $light-light-grey;
     border-radius: 10px;
+    min-width: 263px;
     h2{
         color: $light-grey;
     }
@@ -20,6 +21,9 @@
         font-weight: 700;
         color: $dark-grey;
     }
+    .btn-expanded{
+        max-width: 300px;
+    }
     [type='submit']{
         font-weight: 700;
         background-color: $yellow;
@@ -33,6 +37,7 @@
 
 .legend{
     background-color: $light-light-grey;
+    min-width: 263px;
     .legend-group{
         p:first-child{
             font-weight: 700;
@@ -49,6 +54,7 @@
 .gym-container{
     background-color: $light-light-grey;
     border-radius: 10px;
+    min-width: 350px;
     width: 350px;
     height: 466px;
     p, hr{
