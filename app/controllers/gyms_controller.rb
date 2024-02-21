@@ -1,9 +1,8 @@
 class GymsController < ApplicationController
     def create
-        parameters = params_gym
         set_gyms
         filter_gyms params_gym
-        @my_html = render_to_string action: :create, formats: :html, layout: false        
+        @gym_containers_html = render_to_string action: :create, formats: :html, layout: false        
     end
 
     private

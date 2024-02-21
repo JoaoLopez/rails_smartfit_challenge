@@ -1,2 +1,5 @@
+var gym_count = document.getElementById('gym-count')
+gym_count.innerHTML = '<%= escape_javascript @gyms.size %>'
+
 var gym_list = document.getElementById('gym-list')
-gym_list.innerHTML = '<%= escape_javascript @my_html %>'
+gym_list.innerHTML = '<%= escape_javascript @gym_containers_html %>'
