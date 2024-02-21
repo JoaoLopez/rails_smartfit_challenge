@@ -1,0 +1,33 @@
+<% @gyms.each do |gym| %>
+    <div class="gym-container mt-4 p-3">
+        <div class="gym-container-header">
+            <% if gym.opened %>
+                <p class="opened-gym">Aberto</p>
+            <% else %>
+                <p class="closed-gym">Fechado</p>
+            <% end %>
+            <h2><%= gym.name %></h2>
+            <p class="mb-0"><%= gym.address %></p>
+            <p><%= gym.state %></p>
+        </div>
+        <% if gym.opened %>
+            <hr>
+            <div class="gym-container-body">
+                <div class="gym-images-rules row">
+                    <%= image_tag "#{gym.mask}-mask.png", class:'col' %>
+                    <%= image_tag "#{gym.towel}-towel.png", class:'col' %>
+                    <%= image_tag "#{gym.fountain}-fountain.png", class:'col' %>
+                    <%= image_tag "#{gym.locker_room}-lockerroom.png", class:'col' %>
+                </div>
+                <div class="gym-schedules mt-4 row">
+                    <% gym.schedules.each do |schedule| %>
+                        <div class="col-6 a-gym-schedule">
+                            <h2><%= schedule.weekdays %></h2>
+                            <p><%= schedule.hour %></p>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>

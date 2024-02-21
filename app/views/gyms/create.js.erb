@@ -1,2 +1,2 @@
-alert("SUCCESS JS!")
-<%= render 'create'%>
+var gym_list = document.getElementById('gym-list')
+gym_list.innerHTML = '<%= escape_javascript @my_html %>'

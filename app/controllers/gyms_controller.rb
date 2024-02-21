@@ -1,17 +1,20 @@
 class GymsController < ApplicationController
     def create
         parameters = params_gym
-        get_all_gyms
-        respond_to do |format|
-            format.js
-        end
+        set_gyms
+        @my_html = render_to_string action: :create, formats: :html, layout: false        
     end
 
     private
     def params_gym
         params.permit(:day_period, :show_closed_gyms)
     end
-
+    
+    def set_gyms
+        locations = get_all_locations_from_api
+        convert_locations_2_gyms(locations)
+    end
+    
     def get_all_locations_from_api
         uri = URI('https://test-frontend-developer.s3.amazonaws.com/data/locations.json')
         http = Net::HTTP.new(uri.host, uri.port)
@@ -25,12 +28,13 @@ class GymsController < ApplicationController
     def convert_locations_2_gyms(locations)
         @gyms = []
         locations.each do |l|
-            print(l)
-            print("\n\n")
-            if 'content' in l
+            if l.has_key?('content') && l['content'] != ''
                 l['content'] = l['content'][4..-6] #Removing initial "\n<p>" and final "<\p>\n"
+                l['content'] = l['content'].gsub('&#8211;', '')
+                l['content'], l['state'] = l['content'].split('<br>')
             else
-                l['content'] =  [l['street'], l['region'], l['city_name'], l['state_name'], l['uf']].join(' ')
+                l['content'] =  [l['street'], l['region'], l['city_name']].join(' ')
+                l['state'] = [l['state_name'], l['uf']].join(' ')
             end
             
             schedules = []
@@ -42,8 +46,19 @@ class GymsController < ApplicationController
                 end
             end
 
-            g = Gym.new(name:l['titles'],
+            if l['locker_room'] == 'allowed'
+                l['locker_room'] = 'required'
+            elsif l['locker_room'] == 'closed'
+                l['locker_room'] = 'forbidden'
+            end
+
+            if l['fountain'] == 'not_allowed'
+                l['fountain'] = 'forbidden'
+            end
+
+            g = Gym.new(name:l['title'],
                         address:l['content'],
+                        state:l['state'],
                         opened:l['opened'],
                         mask:l['mask'],
                         towel:l['towel'],
@@ -52,10 +67,5 @@ class GymsController < ApplicationController
                         schedules: schedules)
             @gyms.append(g)
         end
-    end
-
-    def get_all_gyms
-        locations = get_all_locations_from_api
-        convert_locations_2_gyms(locations)
     end
 end
