@@ -2,6 +2,7 @@ class GymsController < ApplicationController
     def create
         parameters = params_gym
         set_gyms
+        filter_gyms params_gym
         @my_html = render_to_string action: :create, formats: :html, layout: false        
     end
 
@@ -67,5 +68,14 @@ class GymsController < ApplicationController
                         schedules: schedules)
             @gyms.append(g)
         end
+    end
+
+    def filter_gyms(parameters)
+        filtered_gyms = []
+        @gyms.each do |g|
+            next if parameters[:show_closed_gyms].nil? and !g.opened
+            filtered_gyms.append(g)
+        end
+        @gyms = filtered_gyms
     end
 end
