@@ -73,7 +73,33 @@ class GymsController < ApplicationController
         filtered_gyms = []
         @gyms.each do |g|
             next if parameters[:show_closed_gyms].nil? and !g.opened
-            filtered_gyms.append(g)
+            
+            if parameters[:day_period].nil?
+                filtered_gyms.append(g)
+                next
+            end
+            
+            if parameters[:day_period] == 'morning'
+                start_time = 6
+                end_time = 12
+            elsif parameters[:day_period] == 'afternoon'
+                start_time = 12
+                end_time = 18
+            elsif parameters[:day_period] == 'evening'
+                start_time = 18
+                end_time = 23
+            end
+
+            g.schedules.each do |schedule|
+                next if !schedule.hour.include?('às')
+                g_start_time = schedule.hour[0..1].to_i
+                g_end_time = schedule.hour[-3..-2].to_i
+                if((g_start_time <= start_time && start_time < g_end_time) ||
+                   (g_start_time < end_time && end_time <= g_end_time))
+                    filtered_gyms.append(g)
+                    break
+                end
+            end
         end
         @gyms = filtered_gyms
     end
